@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Spring Boot-ChattingBoxApplication<chatting-box>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.chattingbox.ChattingBoxApplication",
+            "projectName": "chatting-box",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

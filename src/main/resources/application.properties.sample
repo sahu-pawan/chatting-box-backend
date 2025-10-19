@@ -1,0 +1,7 @@
+# Sample application.properties - fill values or set environment variables
+spring.data.mongodb.uri=mongodb+srv://<username>:<password>@cluster0.vizwcif.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+spring.data.mongodb.database=chatdb
+
+spring.security.oauth2.client.registration.google.client-id=your-google-client-id
+spring.security.oauth2.client.registration.google.client-secret=your-google-client-secret
+spring.security.oauth2.client.registration.google.scope=profile,email

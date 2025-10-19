@@ -1,0 +1,7 @@
+# ignore build artifacts and local config
+/target/
+*.log
+.DS_Store
+
+# local env files
+/src/main/resources/application.properties
