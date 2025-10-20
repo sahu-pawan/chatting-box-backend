@@ -1,0 +1,7 @@
+target
+.git
+.gitignore
+src/main/resources/application.properties
+*.log
+**/node_modules
+**/.DS_Store
