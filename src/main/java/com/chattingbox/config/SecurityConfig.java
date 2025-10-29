@@ -34,7 +34,8 @@ public class SecurityConfig {
                                                 .defaultSuccessUrl("/api/auth/google/success", true))
                                 .formLogin(form -> form
                                                 .loginPage("/login.html")
-                                                .defaultSuccessUrl("/api/auth/google/success", true));
+                                                // Manual form login should go to the chat page on success
+                                                .defaultSuccessUrl("/chat_call.html", true));
 
                 return http.build();
         }
