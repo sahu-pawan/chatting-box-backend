@@ -17,7 +17,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(AuthController.class);
 
     private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
@@ -47,19 +46,14 @@ public class AuthController {
         String email = request.get("email");
         String password = request.get("password");
 
-        logger.info("Login attempt for email={}", email);
         User user = userRepository.findByEmail(email);
         if (user == null) {
-            logger.warn("Login failed: user not found email={}", email);
-            return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials!"));
+            return ResponseEntity.status(401).body("Invalid credentials!");
         }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            logger.warn("Login failed: bad password email={}", email);
-            return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials!"));
+            return ResponseEntity.status(401).body("Invalid credentials!");
         }
-
-        logger.info("Login successful for email={}", email);
 
         String token = jwtUtil.generateToken(email);
 
