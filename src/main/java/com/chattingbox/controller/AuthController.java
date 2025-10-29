@@ -48,11 +48,11 @@ public class AuthController {
 
         User user = userRepository.findByEmail(email);
         if (user == null) {
-            return ResponseEntity.status(401).body("Invalid credentials!");
+            return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials!"));
         }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            return ResponseEntity.status(401).body("Invalid credentials!");
+            return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials!"));
         }
 
         String token = jwtUtil.generateToken(email);
