@@ -13,3 +13,23 @@
         }
     ]
 }
+
+
+
+// {
+//   "version": "0.2.0",
+//   "configurations": [
+//     {
+//       "type": "java",
+//       "name": "Spring Boot - ChattingBoxApplication<chatting-box>",
+//       "request": "launch",
+//       "mainClass": "com.chattingbox.ChattingBoxApplication",
+//       "projectName": "chatting-box",
+//       "cwd": "${workspaceFolder}",
+//       "console": "integratedTerminal",
+//       "env": {
+//         "MONGO_URI": "mongodb+srv://pawan1150sahu:XUiViEs32zLG2Woz@cluster0.vizwcif.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+//       }
+//     }
+//   ]
+// }

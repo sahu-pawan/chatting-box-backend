@@ -1,7 +1,11 @@
-# ignore build artifacts and local config
-/target/
-*.log
-.DS_Store
+# Environment / Secrets
+.env
+application.properties
+application.yml
 
-# local env files
-/src/main/resources/application.properties
+# IDE / Build files
+target/
+*.iml
+*.class
+/.idea/
+/.vscode/
