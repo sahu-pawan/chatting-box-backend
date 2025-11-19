@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎃Cheating-Box</title>
+  <!-- <link rel="preload" as="image" href="/bgpic/bg2.jpeg"> -->
+<link rel="preload" as="image" href="/bgpic/bg2.jpeg?v=2">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; width: 100%; font-family: "Poppins", sans-serif; color: #fff; overflow: hidden; }
+
+   
+/* .bg-image {
+  position: fixed;
+ top: -62px;
+    left: -41px;
+    width: 130%;
+    height: 126%;
+  background-image: url("bgpic/bg2.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: brightness(1);
+   
+
+} */
+
+  .bg-image {
+  position: fixed;
+  top: -62px;
+  left: -41px;
+  width: 130%;
+  height: 126%;
+  /* Use a single versioned URL so CSS and JS match */
+  background-image: url("/bgpic/bg2.jpeg?v=2");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: brightness(1);
+}
+
+.overlay-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.0rem;
+  /* color: #fff; */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+      /* background: rgba(7, 7, 7, 0.15); */
+      background:#000;
+}
+.overlay-text {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  font-weight: bold;
+   font-family: 'Poppins', sans-serif;
+
+}
+
+    .overlay {
+      position: absolute; inset: 0;
+      
+      display: flex; justify-content: center; align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%; max-width: 380px;
+     
+      border-radius: 16px;
+      padding: 30px 25px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      text-align: center;
+      
+      border: 1px solid rgba(255,255,255,0.15);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+
+    h1 { font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 1px; }
+    .section { margin-top: 15px; text-align: left; }
+    .section h2 { font-size: 1.1rem; margin-bottom: 8px; color: #ffd369; }
+
+    input {
+      width: 100%; padding: 10px 14px; margin: 8px 0;
+      border: none; border-radius: 8px; font-size: 0.95rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff; outline: none; transition: 0.3s;
+    }
+
+    input::placeholder { color: #ddd; }
+    input:focus { background: rgba(255,255,255,0.25); box-shadow: 0 0 8px #4a90e2; }
+
+    button {
+      width: 100%; padding: 10px 0; border: none;
+      border-radius: 8px; background: linear-gradient(135deg, #4a90e2, #50c878);
+      color: white; font-size: 1rem; font-weight: 500;
+      cursor: pointer; margin-top: 10px; transition: 0.3s;
+    }
+
+    button:hover { transform: scale(1.02); box-shadow: 0 0 12px rgba(80,200,120,0.6); }
+    .google-btn { background: linear-gradient(135deg, #db4437, #b702ff); margin-top: 15px; }
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 20px 0; }
+
+    #error, #success {
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 8px;
+    }
+    #error { color: #ff6b6b; }
+    #success { color: #4cd964; }
+
+    /* Spinner */
+    .spinner {
+      display: none;
+      margin: 10px auto;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top: 3px solid #4a90e2;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      animation: spin 1s linear infinite;
+    }
+    #preloader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      .card { padding: 25px 18px; }
+    }
+  </style>
+</head>
+<!-- <body>
+  <div class="bg-image"></div>
+
+
+  <div class="overlay">
+    <div class="overlay-logo">🎃</div>
+    <div class="overlay-text">Login and start Cheating on video calls</div>
+    
+    <div class="card">
+      <h1>🎥 Cheating Box 👀👀</h1>
+
+      <div class="section">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Enter Email" />
+        <input type="password" id="password" placeholder="Enter Password" />
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button onclick="login()" style="flex:1">Login</button>
+          <a id="forgotLink" href="/reset_password.html" style="color:#ffd369; text-decoration:underline; font-size:0.9rem; margin-left:8px;">Forgot password?</a>
+        </div>
+        <div id="loginSpinner" class="spinner"></div>
+        <p id="loginMsg"></p>
+      </div>
+
+      
+
+      <hr />
+      <button class="google-btn" onclick="googleLogin()">Continue with Google</button>
+    </div>
+   
+  </div>
+
+  <script>
+     const img = new Image();
+  img.src = "/bgpic/bg2.jpeg";
+    // ✅ Simulate backend check for demo (replace with your real API)
+    const fakeDelay = (ms) => new Promise(res => setTimeout(res, ms));
+
+    async function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("loginMsg");
+      const spinner = document.getElementById("loginSpinner");
+
+      msg.textContent = ""; spinner.style.display = "block";
+
+      if (!email || !password) {
+        spinner.style.display = "none";
+        msg.textContent = "⚠️ Please fill in all fields.";
+        msg.style.color = "#ff6b6b";
+        return;
+      }
+
+      try {
+        await fakeDelay(1000);
+     
+        msg.textContent = "✅ Login successful! Redirecting...";
+        msg.style.color = "#4cd964";
+        // window.location.href = "chat_call.html?google=welcome&name=" + encodeURIComponent(email);
+        window.location.href = `chat_call.html?name=${encodeURIComponent(email)}`;
+      } catch (err) {
+        msg.textContent = "❌ Invalid email or password!";
+        msg.style.color = "#ff6b6b";
+      } finally {
+        spinner.style.display = "none";
+      }
+    }
+
+    // async function signupUser() {
+    //   const username = document.getElementById("signupUsername").value.trim();
+    //   const email = document.getElementById("signupEmail").value.trim();
+    //   const password = document.getElementById("signupPassword").value.trim();
+    //   const msg = document.getElementById("signupMsg");
+    //   const spinner = document.getElementById("signupSpinner");
+
+    //   msg.textContent = ""; spinner.style.display = "block";
+
+    //   if (!username || !email || !password) {
+    //     spinner.style.display = "none";
+    //     msg.textContent = "⚠️ Please fill in all fields.";
+    //     msg.style.color = "#ff6b6b";
+    //     return;
+    //   }
+
+    //   try {
+    //     await fakeDelay(1000);
+    //     // Uncomment for real API call
+    //     /*
+    //     const res = await fetch("/api/auth/register", {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({ username, email, password })
+    //     });
+    //     if (!res.ok) throw new Error("Signup failed");
+    //     */
+    //     msg.textContent = "🎉 Signup successful! Redirecting...";
+    //     msg.style.color = "#4cd964";
+    //     // window.location.href = "chat_call.html?google=new&name=" + encodeURIComponent(username);
+    //     window.location.href = `chat_call.html?name=${encodeURIComponent(email)}`;
+    //   } catch (err) {
+    //     msg.textContent = "⚠️ Signup failed. Try again.";
+    //     msg.style.color = "#ff6b6b";
+    //   } finally {
+    //     spinner.style.display = "none";
+    //   }
+    // }
+
+    function googleLogin() {
+      window.location.href = "/oauth2/authorization/google";
+    }
+  </script>
+</body> -->
+<body>
+  <!-- Background image -->
+  <div class="bg-image" id="bgImage"></div>
+
+  <!-- Temporary loader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+    <p style="text-align:center;color:#fff;font-family:Poppins;margin-top:10px;">Loading...</p>
+  </div>
+
+  <!-- Your overlay and card -->
+  <div class="overlay" id="mainContent" style="display:none;">
+    <div class="overlay-logo">Ｃｈｅａｔｉｎｇ『B』</div>
+    <div class="overlay-text">Login and start Cheating on video calls</div>
+    <div class="card">
+      <h1>🎥 Cheating Box 👀👀</h1>
+      <div class="section">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Enter Email" />
+        <input type="password" id="password" placeholder="Enter Password" />
+        <button onclick="login()">Login</button>
+        <div id="loginSpinner" class="spinner"></div>
+        <p id="loginMsg"></p>
+      </div>
+      <hr />
+      <button class="google-btn" onclick="googleLogin()">Continue with Google</button>
+    </div>
+  </div>
+
+  <script>
+    // Preload image fully before showing UI. Use same versioned URL as CSS.
+  const BG_URL = "/bgpic/bg2.jpeg?v=2";
+    const bgImage = new Image();
+    let bgLoaded = false;
+
+    function showUI() {
+      console.debug('Showing UI');
+      // document.getElementById("bgImage").style.backgroundImage = `url('${BG_URL}')`;
+      document.getElementById("preloader").style.display = "none";
+      document.getElementById("mainContent").style.display = "flex";
+    }
+
+    bgImage.onload = () => {
+      console.debug('Background image loaded via onload');
+      bgLoaded = true;
+      showUI();
+    };
+
+    bgImage.onerror = (e) => {
+      console.warn('Background image failed to load via onerror', e);
+      // Still show UI after a short delay so user isn't stuck on preloader
+      setTimeout(() => {
+        if (!bgLoaded) {
+          console.debug('Fallback: showing UI despite background load failure');
+          showUI();
+        }
+      }, 700);
+    };
+
+    // Start loading the image. If onload doesn't fire (cached/in-flight), ensure UI shows after timeout.
+    bgImage.src = BG_URL;
+    // Safety timeout: if neither onload nor onerror fired within 1200ms, show UI.
+    setTimeout(() => {
+      if (!bgLoaded) {
+        console.debug('Safety timeout reached, showing UI');
+        showUI();
+      }
+    }, 1200);
+
+    // Real login: POST to server /api/auth/login which validates email/password against DB
+    async function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("loginMsg");
+      const spinner = document.getElementById("loginSpinner");
+
+      msg.textContent = ""; spinner.style.display = "block";
+
+      if (!email || !password) {
+        spinner.style.display = "none";
+        msg.textContent = "⚠️ Please fill in all fields.";
+        msg.style.color = "#ff6b6b";
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        if (!res.ok) {
+          // try to read error text or json message
+          let text = await res.text();
+          try { const j = JSON.parse(text); if (j.message) text = j.message; } catch(e){}
+          msg.textContent = text || '❌ Invalid email or password!';
+          msg.style.color = '#ff6b6b';
+          return;
+        }
+
+        const data = await res.json();
+        // store token for subsequent requests (if your app uses it)
+        if (data.token) localStorage.setItem('jwt', data.token);
+
+        msg.textContent = '✅ Login successful! Redirecting...';
+        msg.style.color = '#4cd964';
+        // prefer server-provided username, fall back to email
+        const name = data.username || data.email || email;
+        // small delay so user sees success
+        setTimeout(() => {
+          window.location.href = `chat_call.html?name=${encodeURIComponent(name)}`;
+        }, 700);
+
+      } catch (err) {
+        console.error('Login error', err);
+        msg.textContent = '⚠️ Network error. Try again.';
+        msg.style.color = '#ff6b6b';
+      } finally {
+        spinner.style.display = 'none';
+      }
+    }
+
+    function googleLogin() {
+      window.location.href = "/oauth2/authorization/google";
+    }
+  </script>
+</body>
+
+</html> 
+
