@@ -1,6 +1,5 @@
 # Environment / Secrets
 .env
-application.properties
 application.yml
 
 # IDE / Build files
