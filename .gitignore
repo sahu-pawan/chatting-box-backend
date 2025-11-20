@@ -3,7 +3,7 @@
 application.yml
 
 # IDE / Build files
-# target/
+target/
 # *.iml
 # *.class
 /.idea/
