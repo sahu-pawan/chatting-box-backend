@@ -13,35 +13,54 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.chattingbox.service.CustomUserDetailsService;
 
-@Configuration
+// @Configuration
+// public class SecurityConfig {
+
+//         @Autowired
+//         private CustomUserDetailsService customUserDetailsService;
+
+//         @Bean
+//         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//                 http.csrf(csrf -> csrf.disable())
+//                                 .authorizeHttpRequests(auth -> auth
+//                                                 .requestMatchers("/", "/bgpic/**", "/login.html", "/api/auth/**",
+//                                                                 "/css/**",
+//                                                                 "/js/**", "/static/**", "/ws/**")
+//                                                 .permitAll()
+//                                                 .anyRequest().authenticated())
+//                                 .oauth2Login(oauth2 -> oauth2
+//                                                 // After successful OAuth2 login, forward to our controller which
+//                                                 // will create the user if necessary and then redirect to chat page
+//                                                 .defaultSuccessUrl("/api/auth/google/success", true))
+//                                 .formLogin(form -> form
+//                                                 .loginPage("/login.html")
+//                                                 .defaultSuccessUrl("/api/auth/google/success", true));
+
+//                 return http.build();
+//         }
+
+
+
+        @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
         @Autowired
-        private CustomUserDetailsService customUserDetailsService;
+                private CustomUserDetailsService customUserDetailsService;
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()
+                );
 
-        @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-                http.csrf(csrf -> csrf.disable())
-                                .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/", "/bgpic/**", "/login.html", "/api/auth/**",
-                                                                "/css/**",
-                                                                "/js/**", "/static/**", "/ws/**")
-                                                .permitAll()
-                                                .anyRequest().authenticated())
-                                .oauth2Login(oauth2 -> oauth2
-                                                // After successful OAuth2 login, forward to our controller which
-                                                // will create the user if necessary and then redirect to chat page
-                                                .defaultSuccessUrl("/api/auth/google/success", true))
-                                .formLogin(form -> form
-                                                .loginPage("/login.html")
-                                                .defaultSuccessUrl("/api/auth/google/success", true));
+        return http.build();
+    }
 
-                return http.build();
-        }
-
-        @Bean
-        public AuthenticationManager authManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
-                return http.getSharedObject(AuthenticationManagerBuilder.class)
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
                                 .userDetailsService(customUserDetailsService)
                                 .passwordEncoder(passwordEncoder)
                                 .and()
