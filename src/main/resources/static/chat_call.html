@@ -385,10 +385,10 @@
     .message {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 10px 16px;
-      font-size: 14px;
-      max-width: 75%;
+      border-radius: 10px;
+      padding: 5px 6px;
+      font-size: 10px;
+      max-width: 50%;
       backdrop-filter: blur(12px);
       animation: popIn 0.3s ease-out;
     }
@@ -403,7 +403,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 40px;
     }
 
     #chatInput {
@@ -442,9 +442,10 @@
     /* Control Buttons */
     .controls {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 15px;
       width: 100%;
+      padding-bottom: 20px;
     }
 
     .controls button {
@@ -457,6 +458,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+     
     }
 
     #findRandomBtn {
@@ -537,18 +539,18 @@
       <video id="localVideo" autoplay playsinline></video>
       <div class="chat-overlay">
         <div class="chat-container" id="chatMessages">
-          <div class="message">✨ Welcome! Click "Next" to find someone to talk to 👋</div>
+          <div class="message">✨Welcome! Click "Next" to find someone to talk to👋</div>
         </div>
-
+        <div class="controls">
+          <button id="findRandomBtn">Next</button>
+          <button id="hangupBtn">Hangup</button>
+        </div>
         <div class="chat-input-row">
           <input type="text" id="chatInput" placeholder="Type a message..." />
           <button id="sendBtn">Send</button>
         </div>
 
-        <div class="controls">
-          <button id="findRandomBtn">Next</button>
-          <button id="hangupBtn">Hangup</button>
-        </div>
+       
       </div>
     </div>
   </div>
